@@ -4,6 +4,7 @@ import(
 	"fmt"
 	"os"
 	"github.com/k1574/utf8tmpl/tmpl"
+	"github.com/k1574/utf8tmpl/pin"
 )
 
 func main() {
@@ -15,6 +16,7 @@ func main() {
 
 	utilsMap := map[string]  interface{}  {
 		"tmpl" : tmpl.Run,
+		"pin" : pin.Run,
 	}
 
 	if len(os.Args)<2  {
