@@ -48,9 +48,9 @@ Run(args []string) int {
 		for _, c := range []rune(s) {
 			s, ok := tmpl[c]
 			if !ok {
-				fmt.Fprintf(os.Stderr, "%s: '%s': no such character in template string\n",
-					arg0, string(c) )
-				continue
+				/*fmt.Fprintf(os.Stderr, "%s: '%s': no such character in template string\n",
+					arg0, string(c) )*/
+				s = string(c)	
 			}
 			fmt.Printf("%s", s)
 		}
