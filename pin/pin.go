@@ -34,7 +34,7 @@ GetPin(s []rune, l int, i int) string {
 	ret := ""
 	slen := len(s)
 	for j:=0 ; j<l ; j++ {
-		ret += string(s[ ( i/Pow(slen, j) ) % slen] )
+		ret = string(s[ ( i/Pow(slen, j) ) % slen] ) + ret
 	}
 	return ret
 }
