@@ -25,8 +25,8 @@ Run(args []string) int {
 	status = 0
 	delim = '\n'
 	arg0 = args[0]
-
-	if len(args[1]) != len(args)-2 {
+	
+	if len(args)<3 || len(args[1]) != len(args)-2 {
 		usage()
 	}
 
