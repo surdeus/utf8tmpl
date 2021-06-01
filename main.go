@@ -3,8 +3,8 @@ package main
 import(
 	"fmt"
 	"os"
-	"github.com/k1574/utf8tmpl/tmpl"
-	"github.com/k1574/utf8tmpl/pin"
+	"utf8tmpl/tmpl"
+	"utf8tmpl/pin"
 )
 
 func main() {
