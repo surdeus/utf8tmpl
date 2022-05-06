@@ -5,9 +5,12 @@ import(
 	"fmt"
 	"strconv"
 	"log"
+	"flag"
 )
 
 var(
+	Lflag bool
+	lval int
 	arg0 string
 	delim rune = '\n'
 	status int = 0
@@ -50,18 +53,37 @@ printPins(s []rune, l int) {
 func
 Run(args []string) int {
 	arg0 = args[0]
-
-	if len(args) < 3 {
+	flagSet := flag.NewFlagSet(args[0], flag.ExitOnError)
+	flagSet.IntVar(&lval, "l", 0,
+		"Add combinations with less number of chars starting with arg.")
+	flagSet.BoolVar(&Lflag, "L", false,
+		"Set less number to 1. Overrides l flag.")
+	flagSet.Parse(args[1:])
+	args = flagSet.Args()
+	if len(args) < 2 {
 		usage()
 	}
 
-	chrs := []rune(args[1])
-	n, err := strconv.Atoi(args[2])
+	chrs := []rune(args[0])
+	n, err := strconv.Atoi(args[1])
 	if err!=nil {
 		log.Fatal(err)
 	}
 
-	printPins(chrs, n)
+	if Lflag {
+		lval = 1
+	}
+
+	if lval != 0 {
+		if lval > n {
+			usage()
+		}
+		for i := lval ; i<=n ; i++ {
+			printPins(chrs, i)
+		}
+	} else {
+		printPins(chrs, n)
+	}
 
 	return status
 }
